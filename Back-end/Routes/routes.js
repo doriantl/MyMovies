@@ -17,4 +17,7 @@ module.exports = function (app) {
 
     app.route('/auth/register')
         .post(controller.postforregister)
+
+    app.route('/auth')
+        .post(controller.getforlogin)
 }
