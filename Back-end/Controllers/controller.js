@@ -31,28 +31,20 @@ module.exports.postforregister = async function (req, res){
 
     let mailadress = req.body.mailadress;
     let password = req.body.password;
-    let username = req.body.username;
-    let uuidfromrequest = req.body.uuid;
     const hash = await bcrypt.hash(password,10)
 
 
-    let userid
 
-    if (mailadress && hash && username && iconeurl) {
+    if (mailadress && hash) {
 
-        connection.query('INSERT INTO Pokedex.Users (username, profil_icon_url, users_pwd, mailadress) VALUE (?,?,?,?)', [username, iconeurl, hash, mailadress], function (error, results, fields) {
+        connection.query('INSERT INTO MyMovie.users (password, mail) VALUE (?,?)', [hash, mailadress], function (error, results, fields) {
 
             if (error) throw error;
 
             if (results.length > 0) {
                 console.log("User correctly logged in")
-                userid = results[0]["users_id"]
 
-                connection.query(`UPDATE Users SET uuid = ? WHERE (users_id = ? )`, [uuidfromrequest, userid], function (error, result, fields) {
-                    if (error) {
-                        res.send("Error")
-                    }
-                })
+
             } else {
                 res.send('Invalid');
             }

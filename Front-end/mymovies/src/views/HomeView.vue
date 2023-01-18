@@ -1,7 +1,12 @@
 <template>
+  <div>
   <input id="Email" class="input" type="email" v-model="mailadress" placeholder=" " />
   <input id="Password" class="input" type="password" v-model="password" placeholder=" " />
   <button v-on:click="loguser()" type="button" class="submit" id="submitButton" >submit</button>
+  </div>
+  <div>
+
+  </div>
 </template>
 
 <script>
@@ -39,7 +44,6 @@ export default {
           body : JSON.stringify(data)
         })
 // window alert
-        window.localStorage.setItem('uuid',myuuid);
         this.$router.push('/myacount')
       }
       catch (error) {
