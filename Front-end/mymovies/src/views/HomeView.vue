@@ -4,9 +4,6 @@
   <input id="Password" class="input" type="password" v-model="password" placeholder=" " />
   <button v-on:click="loguser()" type="button" class="submit" id="submitButton" >submit</button>
   </div>
-  <div>
-
-  </div>
 </template>
 
 <script>
